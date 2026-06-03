@@ -1,18 +1,72 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>SUCCESS COACHING CENTRE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Coaching Centre - Login</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <div class="hero-container">
-        <h1>SUCCESS<br>COACHING<br>CENTRE</h1>
-        <p class="subtitle">Future of Learning. Modern. Fast. Secure.</p>
-        <a href="login.html" class="btn-get-started">Get Started</a>
+    <h2>STUDENT LOGIN</h2>
+    <p>Enter mobile number to continue</p>
+
+    <div id="login-form">
+        <input type="text" id="phone-input" placeholder="+91xxxxxxxxxx">
+        
+        <div id="recaptcha-container"></div>
+        
+        <br>
+        <button id="send-otp-btn" onclick="sendOTP()">Send OTP</button>
     </div>
 
+    <div id="otp-section" style="display: none; margin-top: 20px;">
+        <input type="text" id="otp-input" placeholder="Enter OTP">
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <script>
+        // Initialize Firebase (Yahan apna config daalna mat bhoolna)
+        const firebaseConfig = {
+            apiKey: "AIzaSy...",
+            authDomain: "success-coaching-centre-34d05.firebaseapp.com",
+            projectId: "success-coaching-centre-34d05",
+            storageBucket: "success-coaching-centre-34d05.appspot.com",
+            messagingSenderId: "YOUR_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'normal'
+        });
+
+        let confirmationResult;
+
+        function sendOTP() {
+            const phoneNumber = document.getElementById('phone-input').value;
+            firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+                .then((result) => {
+                    confirmationResult = result;
+                    alert("OTP sent!");
+                    document.getElementById('otp-section').style.display = 'block';
+                    document.getElementById('login-form').style.display = 'none';
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        }
+
+        function verifyOTP() {
+            const otp = document.getElementById('otp-input').value;
+            confirmationResult.confirm(otp).then((result) => {
+                alert("Login Successful!");
+            }).catch((error) => {
+                alert("Invalid OTP!");
+            });
+        }
+    </script>
 </body>
 </html>
