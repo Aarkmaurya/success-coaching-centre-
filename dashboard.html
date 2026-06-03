@@ -1,0 +1,56 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard | Success Coaching Centre</title>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 style="color: var(--neon-purple); text-align: center;">SUCCESS</h2>
+        <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="notes.html" class="nav-link">Study Notes</a>
+        <a href="tests.html" class="nav-link">Online Tests</a>
+        <a href="result.html" class="nav-link">Results</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 id="user-name">Welcome!</h1>
+        <p>Welcome back, Student!</p>
+        
+        <div class="card">
+            <h3>Latest Announcement</h3>
+            <p>New NVS batch starting from next week!</p>
+        </div>
+        
+        <div class="card">
+            <h3>Average Score</h3>
+            <h2 style="color: var(--neon-blue);">85%</h2>
+        </div>
+    </div>
+    
+<!-- Dashboard aur baki pages ke liye -->
+<script type="module" src="js/app.js"></script>
+
+<script type="module">
+    import { auth } from './js/firebase-config.js';
+    import { fetchStudentData } from './js/db-operations.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const data = await fetchStudentData(user.uid);
+            if (data) {
+                document.getElementById('user-name').innerText = "Welcome, " + data.name;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

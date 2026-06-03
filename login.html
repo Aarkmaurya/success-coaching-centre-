@@ -1,0 +1,25 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Login - SUCCESS</title>
+</head>
+<body>
+
+    <div class="hero-container">
+        <h2 style="color: var(--neon-blue);">STUDENT LOGIN</h2>
+        <p>Enter mobile number to continue</p>
+        
+        <div class="card" style="background: #161b22; padding: 30px; border-radius: 15px; width: 300px;">
+            <input type="text" id="phone" placeholder="+91 00000 00000" style="width: 100%; padding: 12px; border-radius: 5px; border: none; margin-bottom: 20px; background: #0a0b10; color: white;">
+            <button id="send-otp" class="btn-get-started" style="display: block; width: 100%; border: none;">Send OTP</button>
+            <div id="recaptcha-container"></div>
+        </div>
+    </div>
+
+    <!-- Firebase Script Loader -->
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

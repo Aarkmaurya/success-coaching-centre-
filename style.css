@@ -1,0 +1,75 @@
+/* style.css */
+:root {
+    --bg-dark: #0a0b10;
+    --card-bg: #161b22;
+    --neon-blue: #00f3ff;
+    --neon-purple: #9d00ff;
+    --text-light: #ffffff;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #111;
+    border-right: 2px solid #222;
+    padding: 20px;
+    position: fixed;
+}
+
+.nav-link {
+    display: block;
+    padding: 15px;
+    margin: 10px 0;
+    color: #888;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+.nav-link.active {
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 280px;
+    padding: 40px;
+    width: 100%;
+}
+
+/* Card Styling */
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Hero Elements */
+h1 { color: var(--neon-blue); text-transform: uppercase; }
+.btn-get-started {
+    padding: 15px 40px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Online Test | Success Coaching Centre</title>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2 style="color: var(--neon-purple); text-align: center;">SUCCESS</h2>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="notes.html" class="nav-link">Study Notes</a>
+        <a href="tests.html" class="nav-link active">Online Tests</a>
+        <a href="result.html" class="nav-link">Results</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Online Test: Algebra</h1>
+        
+        <h2 id="timer" style="color: var(--neon-blue); margin-bottom: 20px;">Time Remaining: 30:00</h2>
+        
+        <div class="card">
+            <p>1. What is the value of x if 2x + 5 = 15?</p>
+            <input type="text" placeholder="Your Answer" style="width: 100%; padding: 10px; margin-top: 10px; background: #0a0b10; border: 1px solid #333; color: white; border-radius: 5px;">
+        </div>
+
+        <div class="card">
+            <p>2. If x - 3 = 7, then x = ?</p>
+            <input type="text" placeholder="Your Answer" style="width: 100%; padding: 10px; margin-top: 10px; background: #0a0b10; border: 1px solid #333; color: white; border-radius: 5px;">
+        </div>
+        
+        <button class="btn-get-started" style="border: none; cursor: pointer; padding: 15px 30px; font-size: 1.1rem;" onclick="window.location.href='result.html'">Submit Test</button>
+    </div>
+    
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/test-logic.js"></script>
+
+</body>
+</html>
